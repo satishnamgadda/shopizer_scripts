@@ -1,12 +1,11 @@
 pipeline
 {
     agent { node { label 'JDK11' } }
-    triggers { cron('30 5 * * *') }
     stages {
         stage('vcs') {
             steps {
                 git url: 'https://github.com/satishnamgadda/shopizer.git',
-                    branch: "release"
+                    branch: "main"
             }  
         }
         stage('build') {
