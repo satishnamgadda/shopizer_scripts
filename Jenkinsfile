@@ -3,6 +3,12 @@ pipeline
     agent { node { label 'JDK11' } }
     triggers { pollSCM('* * * * *') }
     stages {
+        stage('git') {
+            steps {
+                sh 'git checkout feature',
+                sh 'git merge develop'
+            }
+        }
         stage('vcs') {
             steps {
                 git url: 'https://github.com/satishnamgadda/shopizer_scripts.git',
